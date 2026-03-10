@@ -6,11 +6,11 @@
   --text-primary: #ffffff;
   --text-secondary: #aaaaaa;
   --text-muted: #555555;
-  --accent: #ffffff;
-  --accent-glow: rgba(255, 255, 255, 0.4);
-  --accent-secondary: #cccccc;
+  --accent: #dc143c;
+  --accent-glow: rgba(220, 20, 60, 0.5);
+  --accent-secondary: #ff1744;
   --border: #2a2a2a;
-  --gradient: linear-gradient(135deg, #ffffff 0%, #cccccc 100%);
+  --gradient: linear-gradient(135deg, #dc143c 0%, #ff1744 100%);
 }
 
 * {
@@ -57,16 +57,19 @@ body {
 }
 
 .cursor {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
   background: var(--accent);
   border-radius: 50%;
   position: fixed;
   pointer-events: none;
   z-index: 10000;
-  transition: transform 0.1s ease;
+  transition: transform 0.15s ease;
   mix-blend-mode: difference;
-  box-shadow: 0 0 10px var(--accent);
+  box-shadow: 
+    0 0 10px var(--accent),
+    0 0 20px var(--accent),
+    0 0 30px var(--accent-glow);
 }
 
 .cursor-follower {
@@ -77,8 +80,9 @@ body {
   position: fixed;
   pointer-events: none;
   z-index: 9999;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease;
   mix-blend-mode: difference;
+  box-shadow: 0 0 15px var(--accent-glow);
 }
 
 .cursor-follower.active {
@@ -240,28 +244,28 @@ body {
 }
 
 .orb-1 {
-  width: 400px;
-  height: 400px;
-  background: var(--accent);
-  top: 10%;
-  left: 10%;
-  opacity: 0.3;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, var(--accent) 0%, var(--accent-secondary) 50%, transparent 70%);
+  top: 5%;
+  left: 5%;
+  opacity: 0.4;
 }
 
 .orb-2 {
-  width: 300px;
-  height: 300px;
-  background: #ffffff;
-  bottom: 20%;
-  right: 15%;
-  opacity: 0.15;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, var(--accent-secondary) 0%, transparent 70%);
+  bottom: 10%;
+  right: 10%;
+  opacity: 0.3;
   animation-delay: -3s;
 }
 
 .orb-3 {
-  width: 200px;
-  height: 200px;
-  background: var(--accent);
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -380,8 +384,8 @@ body {
   display: flex;
   gap: 1.5rem;
   justify-content: center;
- ;
-  margin-bottom flex-wrap: wrap: 3rem;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
   opacity: 0;
   animation: fadeIn 0.8s ease forwards 1s;
 }
@@ -442,14 +446,14 @@ body {
 
 .btn-glitch::before {
   left: 2px;
-  text-shadow: -1px 0 #888888;
+  text-shadow: -1px 0 #00ffff;
   clip-path: inset(0 0 0 0);
   animation: glitch-1 2s infinite linear alternate-reverse;
 }
 
 .btn-glitch::after {
   left: -2px;
-  text-shadow: -1px 0 #666666;
+  text-shadow: -1px 0 #ff00ff;
   clip-path: inset(0 0 0 0);
   animation: glitch-2 3s infinite linear alternate-reverse;
 }
@@ -572,9 +576,9 @@ body {
   border-radius: 50%;
 }
 
-.terminal-dot.red { background: #ffffff; }
-.terminal-dot.yellow { background: #cccccc; }
-.terminal-dot.green { background: #888888; }
+.terminal-dot.red { background: #ff5f56; }
+.terminal-dot.yellow { background: #ffbd2e; }
+.terminal-dot.green { background: #27c93f; }
 
 .terminal-title {
   margin-left: 10px;
@@ -586,6 +590,14 @@ body {
   padding: 15px;
   font-family: 'Courier New', monospace;
   font-size: 0.8rem;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.terminal-output {
+  max-height: 120px;
+  overflow-y: auto;
+  margin-bottom: 10px;
 }
 
 .terminal-line {
@@ -615,6 +627,26 @@ body {
   color: var(--text-primary);
 }
 
+.terminal-input-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.terminal-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-primary);
+  font-family: 'Courier New', monospace;
+  font-size: 0.8rem;
+}
+
+.terminal-input::placeholder {
+  color: var(--text-muted);
+}
+
 section {
   padding: 8rem 0;
 }
@@ -637,6 +669,8 @@ section {
   font-family: 'Orbitron', sans-serif;
   font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-top: 0.5rem;
 }
 
 .glitch {
@@ -662,7 +696,7 @@ section {
 
 .glitch::after {
   left: -2px;
-  text-shadow: -2px 0 #666666;
+  text-shadow: -2px 0 #00ffff;
   clip-path: inset(0 0 0 0);
   animation: glitch-2 3s infinite linear alternate-reverse;
 }
@@ -698,11 +732,12 @@ section {
 }
 
 .feature-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
+  background: rgba(21, 21, 21, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 2.5rem;
   text-align: center;
-  transition: all 0.4s ease;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
 }
@@ -711,25 +746,28 @@ section {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, transparent 0%, var(--accent-glow) 100%);
+  background: linear-gradient(135deg, rgba(220, 20, 60, 0.15) 0%, transparent 50%);
   opacity: 0;
-  transition: opacity 0.4s ease;
+  transition: opacity 0.5s ease;
 }
 
 .feature-card:hover {
-  transform: translateY(-10px);
+  transform: translateY(-15px) scale(1.02);
   border-color: var(--accent);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.4),
+    0 0 30px var(--accent-glow);
 }
 
 .feature-card:hover::before {
-  opacity: 0.1;
+  opacity: 1;
 }
 
 .feature-icon {
   font-size: 3rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
   animation: iconFloat 3s ease-in-out infinite;
+  filter: drop-shadow(0 0 10px var(--accent-glow));
 }
 
 @keyframes iconFloat {
@@ -739,13 +777,15 @@ section {
 
 .feature-card h3 {
   font-family: 'Orbitron', sans-serif;
-  font-size: 1.3rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.4rem;
+  margin-bottom: 0.8rem;
+  letter-spacing: 0.05em;
 }
 
 .feature-card p {
   color: var(--text-secondary);
-  font-size: 0.95rem;
+  font-size: 1rem;
+  line-height: 1.7;
 }
 
 .feature-glow {
@@ -754,15 +794,15 @@ section {
   left: 50%;
   transform: translateX(-50%);
   width: 200%;
-  height: 100%;
-  background: radial-gradient(ellipse, var(--accent-glow) 0%, transparent 70%);
+  height: 150%;
+  background: radial-gradient(ellipse at center, var(--accent-glow) 0%, transparent 70%);
   opacity: 0;
-  transition: opacity 0.4s ease;
+  transition: opacity 0.5s ease;
   pointer-events: none;
 }
 
 .feature-card:hover .feature-glow {
-  opacity: 0.3;
+  opacity: 0.4;
 }
 
 .stats {

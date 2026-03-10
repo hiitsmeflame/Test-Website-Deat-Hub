@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileMenu();
   initSmoothScroll();
   initFormHandler();
+  initSocketIO();
 });
 
 function initCursor() {
@@ -20,8 +21,8 @@ function initCursor() {
   document.addEventListener('mousemove', (e) => {
     mouseX = e.clientX;
     mouseY = e.clientY;
-    cursor.style.left = mouseX - 4 + 'px';
-    cursor.style.top = mouseY - 4 + 'px';
+    cursor.style.left = mouseX - 5 + 'px';
+    cursor.style.top = mouseY - 5 + 'px';
   });
 
   const updateFollower = () => {
@@ -48,6 +49,8 @@ function initCursor() {
 
 function initParticles() {
   const particlesContainer = document.getElementById('particles');
+  if (!particlesContainer) return;
+  
   const particleCount = 30;
 
   for (let i = 0; i < particleCount; i++) {
@@ -63,6 +66,8 @@ function initParticles() {
 function initTypingEffect() {
   const text = "The most powerful Discord nuke bot. Destroy servers with style.";
   const typingElement = document.querySelector('.typing-text');
+  if (!typingElement) return;
+  
   let index = 0;
 
   const type = () => {
@@ -97,7 +102,7 @@ function initScrollAnimations() {
 }
 
 function initCountUp() {
-  const statNumbers = document.querySelectorAll('.stat-num, .h-stat-num');
+  const statNumbers = document.querySelectorAll('.stat-num, .h-stat-num:not(.visitor-count)');
   let animated = false;
 
   const animateCounters = () => {
@@ -113,7 +118,7 @@ function initCountUp() {
       animated = true;
 
       statNumbers.forEach(stat => {
-        const target = parseInt(stat.getAttribute('data-count').replace(/,/g, ''));
+        const target = parseInt(stat.getAttribute('data-count').toString().replace(/,/g, ''));
         const duration = 2500;
         const increment = target / (duration / 16);
         let current = 0;
@@ -139,9 +144,9 @@ function initCountUp() {
 
 function formatNumber(num) {
   if (num >= 1000000) {
-    return (num / 1000000).toFixed(0) + 'M+';
+    return (num / 1000000).toFixed(1) + 'M+';
   } else if (num >= 1000) {
-    return (num / 1000).toFixed(0) + 'K+';
+    return (num / 1000).toFixed(1) + 'K+';
   }
   return num.toString();
 }
@@ -170,6 +175,7 @@ function initTiltEffect() {
 
 function initNavbarScroll() {
   const navbar = document.querySelector('.navbar');
+  if (!navbar) return;
 
   window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
@@ -183,6 +189,7 @@ function initNavbarScroll() {
 function initMobileMenu() {
   const menuToggle = document.querySelector('.menu-toggle');
   const navLinks = document.querySelector('.nav-links');
+  if (!menuToggle || !navLinks) return;
 
   menuToggle.addEventListener('click', () => {
     navLinks.classList.toggle('active');
@@ -218,6 +225,7 @@ function initSmoothScroll() {
 
 function initFormHandler() {
   const form = document.querySelector('.contact-form');
+  if (!form) return;
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -226,7 +234,7 @@ function initFormHandler() {
     const originalText = btn.innerHTML;
 
     btn.innerHTML = '<span>SENT! ✓</span>';
-    btn.style.background = '#ffffff';
+    btn.style.background = '#22c55e';
 
     setTimeout(() => {
       btn.innerHTML = originalText;
@@ -234,6 +242,66 @@ function initFormHandler() {
       form.reset();
     }, 3000);
   });
+}
+
+function initSocketIO() {
+  const socket = io();
+  
+  socket.on('visitors', (data) => {
+    const visitorCount = document.querySelector('.visitor-count');
+    if (visitorCount) {
+      animateVisitorCount(visitorCount, data.current);
+    }
+  });
+
+  const terminalInput = document.querySelector('.terminal-input');
+  const terminalOutput = document.querySelector('.terminal-output');
+  
+  if (terminalInput) {
+    terminalInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        const cmd = terminalInput.value.trim();
+        if (cmd) {
+          const outputLine = document.createElement('div');
+          outputLine.className = 'terminal-line';
+          outputLine.innerHTML = `<span class="prompt">➜</span> <span class="cmd">${cmd}</span>`;
+          terminalOutput.appendChild(outputLine);
+          
+          socket.emit('terminal-input', cmd);
+          terminalInput.value = '';
+          
+          terminalOutput.scrollTop = terminalOutput.scrollHeight;
+        }
+      }
+    });
+  }
+
+  socket.on('terminal-output', (response) => {
+    const outputLine = document.createElement('div');
+    outputLine.className = 'terminal-line';
+    outputLine.innerHTML = `<span class="prompt">➜</span> <span class="cmd">${response}</span>`;
+    terminalOutput.appendChild(outputLine);
+    terminalOutput.scrollTop = terminalOutput.scrollHeight;
+  });
+}
+
+function animateVisitorCount(element, target) {
+  const duration = 1000;
+  const start = parseInt(element.textContent) || 0;
+  const increment = (target - start) / (duration / 16);
+  let current = start;
+
+  const update = () => {
+    current += increment;
+    if (current < target) {
+      element.textContent = Math.floor(current);
+      requestAnimationFrame(update);
+    } else {
+      element.textContent = target;
+    }
+  };
+
+  update();
 }
 
 window.addEventListener('load', () => {

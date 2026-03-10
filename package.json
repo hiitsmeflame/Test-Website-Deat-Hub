@@ -1,0 +1,16 @@
+{
+  "name": "death-hub",
+  "version": "1.0.0",
+  "description": "Death Hub - Discord Nuke Bot Portfolio",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "socket.io": "^4.7.2",
+    "compression": "^1.7.4",
+    "morgan": "^1.10.0"
+  }
+}

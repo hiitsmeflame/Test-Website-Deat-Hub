@@ -76,9 +76,9 @@
             <span class="h-stat-num" data-count="8500000">0</span>
             <span class="h-stat-label">Users</span>
           </div>
-          <div class="h-stat">
-            <span class="h-stat-num" data-count="99">0</span>
-            <span class="h-stat-label">% Uptime</span>
+          <div class="h-stat live-visitors">
+            <span class="h-stat-num visitor-count" data-count="0">0</span>
+            <span class="h-stat-label">Live Visitors</span>
           </div>
         </div>
       </div>
@@ -101,7 +101,11 @@
           <div class="terminal-line"><span class="prompt">➜</span> <span class="cmd">loading modules...</span></div>
           <div class="terminal-line"><span class="prompt">➜</span> <span class="cmd">initializing nuker...</span></div>
           <div class="terminal-line"><span class="prompt">➜</span> <span class="cmd">bypass complete ✓</span></div>
-          <div class="terminal-line active"><span class="prompt">➜</span> <span class="cmd cursor-blink">ready</span></div>
+          <div class="terminal-output"></div>
+          <div class="terminal-input-line">
+            <span class="prompt">➜</span>
+            <input type="text" class="terminal-input" placeholder="Type command..." autocomplete="off">
+          </div>
         </div>
       </div>
     </section>
@@ -369,6 +373,7 @@
     </div>
   </footer>
 
+  <script src="/socket.io/socket.io.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
