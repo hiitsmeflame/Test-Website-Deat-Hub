@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Death Hub | Ultimate Discord Nuke Bot</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💀</text></svg>">
+</head>
+<body>
+  <div class="noise-overlay"></div>
+  <div class="scanlines"></div>
+  
+  <div class="cursor"></div>
+  <div class="cursor-follower"></div>
+
+  <nav class="navbar">
+    <div class="logo">
+      <span class="logo-skull">💀</span>
+      <span class="logo-text" data-text="DEATH HUB">DEATH HUB</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#home" class="nav-link"><span>01</span> Home</a></li>
+      <li><a href="#features" class="nav-link"><span>02</span> Features</a></li>
+      <li><a href="#stats" class="nav-link"><span>03</span> Stats</a></li>
+      <li><a href="#pricing" class="nav-link"><span>04</span> Pricing</a></li>
+      <li><a href="#contact" class="nav-link"><span>05</span> Contact</a></li>
+    </ul>
+    <div class="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </nav>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="hero-bg">
+        <div class="grid-bg"></div>
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+        <div class="particles" id="particles"></div>
+      </div>
+      
+      <div class="hero-content">
+        <div class="badge">⚡ POWERED BY CUTTING-EDGE TECHNOLOGY</div>
+        
+        <h1 class="hero-title">
+          <span class="title-line" data-text="DOMINATE">DOMINATE</span>
+          <span class="title-line accent" data-text="YOUR SERVER">YOUR SERVER</span>
+        </h1>
+        
+        <p class="hero-description">
+          <span class="typing-text"></span><span class="cursor-blink">|</span>
+        </p>
+        
+        <div class="hero-cta">
+          <a href="#" class="btn btn-primary btn-glitch" data-text="INVITE BOT">
+            <span>INVITE BOT</span>
+          </a>
+          <a href="#features" class="btn btn-secondary">
+            <span>EXPLORE</span>
+          </a>
+        </div>
+        
+        <div class="hero-stats">
+          <div class="h-stat">
+            <span class="h-stat-num" data-count="15000">0</span>
+            <span class="h-stat-label">Servers</span>
+          </div>
+          <div class="h-stat">
+            <span class="h-stat-num" data-count="8500000">0</span>
+            <span class="h-stat-label">Users</span>
+          </div>
+          <div class="h-stat">
+            <span class="h-stat-num" data-count="99">0</span>
+            <span class="h-stat-label">% Uptime</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="scroll-indicator">
+        <span>SCROLL</span>
+        <div class="scroll-mouse">
+          <div class="scroll-wheel"></div>
+        </div>
+      </div>
+      
+      <div class="terminal">
+        <div class="terminal-header">
+          <span class="terminal-dot red"></span>
+          <span class="terminal-dot yellow"></span>
+          <span class="terminal-dot green"></span>
+          <span class="terminal-title">death_hub.exe</span>
+        </div>
+        <div class="terminal-body">
+          <div class="terminal-line"><span class="prompt">➜</span> <span class="cmd">loading modules...</span></div>
+          <div class="terminal-line"><span class="prompt">➜</span> <span class="cmd">initializing nuker...</span></div>
+          <div class="terminal-line"><span class="prompt">➜</span> <span class="cmd">bypass complete ✓</span></div>
+          <div class="terminal-line active"><span class="prompt">➜</span> <span class="cmd cursor-blink">ready</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="features">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">// FEATURES</span>
+          <h2 class="section-title glitch" data-text="DESTROY EVERYTHING">DESTROY EVERYTHING</h2>
+        </div>
+        
+        <div class="features-grid">
+          <article class="feature-card" data-tilt>
+            <div class="feature-icon">💣</div>
+            <h3>Mass Ban</h3>
+            <p>Ban all members in seconds with our lightning-fast ban hammer</p>
+            <div class="feature-glow"></div>
+          </article>
+          
+          <article class="feature-card" data-tilt>
+            <div class="feature-icon">🔨</div>
+            <h3>Mass Kick</h3>
+            <p>Remove everyone from your server with a single command</p>
+            <div class="feature-glow"></div>
+          </article>
+          
+          <article class="feature-card" data-tilt>
+            <div class="feature-icon">🗑️</div>
+            <h3>Channel Nuke</h3>
+            <p>Delete and recreate all channels instantly</p>
+            <div class="feature-glow"></div>
+          </article>
+          
+          <article class="feature-card" data-tilt>
+            <div class="feature-icon">🏠</div>
+            <h3>Server Nuke</h3>
+            <p>Full server reset - roles, channels, emojis, everything</p>
+            <div class="feature-glow"></div>
+          </article>
+          
+          <article class="feature-card" data-tilt>
+            <div class="feature-icon">🎭</div>
+            <h3>Raided Channels</h3>
+            <p>Create chaos with custom spam channels</p>
+            <div class="feature-glow"></div>
+          </article>
+          
+          <article class="feature-card" data-tilt>
+            <div class="feature-icon">🔐</div>
+            <h3>Admin Takeover</h3>
+            <p>Gain full server control instantly</p>
+            <div class="feature-glow"></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="stats" class="stats">
+      <div class="container">
+        <div class="stats-wrapper">
+          <div class="stat-box">
+            <div class="stat-icon">🏰</div>
+            <span class="stat-num" data-count="15000">0</span>
+            <span class="stat-label">Servers Protected</span>
+          </div>
+          <div class="stat-box">
+            <div class="stat-icon">👥</div>
+            <span class="stat-num" data-count="8500000">0</span>
+            <span class="stat-label">Total Users</span>
+          </div>
+          <div class="stat-box">
+            <div class="stat-icon">⚡</div>
+            <span class="stat-num" data-count="25000000">0</span>
+            <span class="stat-label">Actions Executed</span>
+          </div>
+          <div class="stat-box">
+            <div class="stat-icon">🕐</div>
+            <span class="stat-num" data-count="99">0</span>
+            <span class="stat-suffix">%</span>
+            <span class="stat-label">Uptime</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="commands" class="commands">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">// COMMANDS</span>
+          <h2 class="section-title">COMMAND LIST</h2>
+        </div>
+        
+        <div class="commands-wrapper">
+          <div class="commands-list">
+            <div class="cmd-item">
+              <span class="cmd-prefix">/</span>
+              <span class="cmd-name">nuke</span>
+              <span class="cmd-desc">Nuke the entire server</span>
+            </div>
+            <div class="cmd-item">
+              <span class="cmd-prefix">/</span>
+              <span class="cmd-name">banall</span>
+              <span class="cmd-desc">Ban every member</span>
+            </div>
+            <div class="cmd-item">
+              <span class="cmd-prefix">/</span>
+              <span class="cmd-name">kickall</span>
+              <span class="cmd-desc">Kick every member</span>
+            </div>
+            <div class="cmd-item">
+              <span class="cmd-prefix">/</span>
+              <span class="cmd-name">deletechannels</span>
+              <span class="cmd-desc">Delete all channels</span>
+            </div>
+            <div class="cmd-item">
+              <span class="cmd-prefix">/</span>
+              <span class="cmd-name">spamchannels</span>
+              <span class="cmd-desc">Create spam channels</span>
+            </div>
+            <div class="cmd-item">
+              <span class="cmd-prefix">/</span>
+              <span class="cmd-name">webhookspam</span>
+              <span class="cmd-desc">Mass webhook spam</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing" class="pricing">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">// PRICING</span>
+          <h2 class="section-title">CHOOSE YOUR PLAN</h2>
+        </div>
+        
+        <div class="pricing-grid">
+          <div class="pricing-card">
+            <div class="pricing-header">
+              <h3>TESTER</h3>
+              <div class="price">
+                <span class="currency">$</span>
+                <span class="amount">0</span>
+                <span class="period">/ lifetime</span>
+              </div>
+            </div>
+            <ul class="pricing-features">
+              <li>✓ Limited Commands</li>
+              <li>✓ 1 Server</li>
+              <li>✓ Basic Features</li>
+              <li>✗ No Support</li>
+            </ul>
+            <a href="#" class="btn btn-secondary">GET FREE</a>
+          </div>
+          
+          <div class="pricing-card featured">
+            <div class="featured-badge">MOST POPULAR</div>
+            <div class="pricing-header">
+              <h3>PREMIUM</h3>
+              <div class="price">
+                <span class="currency">$</span>
+                <span class="amount">15</span>
+                <span class="period">/ lifetime</span>
+              </div>
+            </div>
+            <ul class="pricing-features">
+              <li>✓ All Commands</li>
+              <li>✓ Unlimited Servers</li>
+              <li>✓ Full Access</li>
+              <li>✓ Priority Support</li>
+            </ul>
+            <a href="#" class="btn btn-primary btn-glitch" data-text="BUY NOW">BUY NOW</a>
+          </div>
+          
+          <div class="pricing-card">
+            <div class="pricing-header">
+              <h3>LIFETIME</h3>
+              <div class="price">
+                <span class="currency">$</span>
+                <span class="amount">35</span>
+                <span class="period">/ lifetime</span>
+              </div>
+            </div>
+            <ul class="pricing-features">
+              <li>✓ All Commands</li>
+              <li>✓ Unlimited Servers</li>
+              <li>✓ Lifetime Updates</li>
+              <li>✓ 24/7 Support</li>
+            </ul>
+            <a href="#" class="btn btn-secondary">BUY NOW</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">// CONTACT</span>
+          <h2 class="section-title">GET IN TOUCH</h2>
+        </div>
+        
+        <div class="contact-content">
+          <div class="contact-info">
+            <div class="info-item">
+              <span class="info-icon">📧</span>
+              <span>deathhub@bot.com</span>
+            </div>
+            <div class="info-item">
+              <span class="info-icon">💬</span>
+              <span>Discord Support Server</span>
+            </div>
+            <div class="info-item">
+              <span class="info-icon">🌐</span>
+              <span>deathhub.gq</span>
+            </div>
+          </div>
+          
+          <form class="contact-form">
+            <div class="form-row">
+              <div class="form-group">
+                <input type="text" id="name" required>
+                <label for="name">Your Discord ID</label>
+              </div>
+              <div class="form-group">
+                <input type="email" id="email" required>
+                <label for="email">Your Email</label>
+              </div>
+            </div>
+            <div class="form-group">
+              <select id="subject">
+                <option value="">Select Topic</option>
+                <option value="purchase">Purchase</option>
+                <option value="support">Support</option>
+                <option value="bug">Report Bug</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <textarea id="message" rows="5" required></textarea>
+              <label for="message">Your Message</label>
+            </div>
+            <button type="submit" class="btn btn-primary">
+              <span>SEND MESSAGE</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <span>💀</span> DEATH HUB
+        </div>
+        <p>&copy; 2026 Death Hub. All rights reserved.</p>
+        <div class="social-links">
+          <a href="#" class="social-link">Discord</a>
+          <a href="#" class="social-link">GitHub</a>
+          <a href="#" class="social-link">Twitter</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
