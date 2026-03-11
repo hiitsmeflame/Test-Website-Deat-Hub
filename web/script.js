@@ -234,7 +234,8 @@ function initFormHandler() {
     const originalText = btn.innerHTML;
 
     btn.innerHTML = '<span>SENT! ✓</span>';
-    btn.style.background = '#22c55e';
+    btn.style.background = '#ffffff';
+    btn.style.color = '#050505';
 
     setTimeout(() => {
       btn.innerHTML = originalText;
